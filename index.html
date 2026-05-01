@@ -115,17 +115,35 @@
 		opacity: 0.5;
 	}
 	
-	/motd {
-		animation-name: john;
-		animation-duration: 4s;
-		animation-iteration-count: infinite;
+	#motd {
+	  width: 95%;
+	  background-color: black;
+	  color: white;
+	  overflow: hidden;
+	  white-space: nowrap;
+	  position: relative;
+	}
+
+	#motd span {
+	  display: inline-block;
+	  padding-left: 100%;
+	  animation: ticker 180s linear infinite;
+	}
+
+	@keyframes ticker {
+	  from {
+		transform: translateX(0%);
+	  }
+	  to {
+		transform: translateX(-100%);
+	  }
 	}
   </style>
 </head>
 <body>
 
 <h1>jt portal</h1>
-<h2 id="motd">Inkdin: Rethink the Ink</h2>
+<h2 id="motd"><span>Inkdin: Rethink the Ink</span></h2>
 
 <table>
   <tbody>
@@ -204,19 +222,36 @@
 
 
 <script>
-	const randomMessages = ["shout out to Jake Tomkins 🔥🔥🔥", 
-    ...Array(20).fill("shout out to Jake Tomkins 🔥🔥🔥"),
-	"shout out to Seth Wegrzyn 🔥🔥🔥",
-	"shout out to Aidan Newling 🔥🔥🔥",
-	"shout out to Andrew Butler 🔥🔥🔥",
-	"Inkdin: Rethink the Ink"]
+	function shuffle(array) {
+	  for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	  }
+	  return array;
+	}
 	
-	const randomText = document.getElementById('motd');
+	
+	const messages = [
+	  "shout out to Jake Tomkins 🔥🔥🔥",
+	  "Sydney: Seth Wegrzyn thinks he can get IB dux (not gonna happen bro)",
+	  "shout out to Aidan Newling 🔥🔥🔥",
+	  "shout out to Andrew Butler 🔥🔥🔥",
+	  "Its more than just a pen to use here at Inkdin. Rethink the Ink today!",
+	  "Washignton: Trump to impose 200% tariffs on JTPortal, blames \"bad deal\".",
+	  "Tehran: JTPortal to impose toll on all ships travelling through Strait of Hormuz.",
+	  "Sydney: Christian Lau reportedly best French Horn player in the entire world."];
 
-	let messageOfTheDay = Math.floor(Math.random() * randomMessages.length)
-	console.log(messageOfTheDay)
-	randomText.textContent = randomMessages[messageOfTheDay]
-	
+	// shuffle them
+	const ticker = document.querySelector('#motd span');
+
+	const shuffled = shuffle(messages);
+
+	const spacer = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+	const tickerText = shuffled.join(spacer);
+
+	// duplicate for looping
+	ticker.innerHTML = tickerText + spacer + tickerText;
+		
 
 	
 	
