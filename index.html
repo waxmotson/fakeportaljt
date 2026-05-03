@@ -145,10 +145,7 @@
 <table>
   <tbody>
 
-    <!-- 4 rows -->
-    <!-- 10 columns each -->
-
-    <!-- Row 1 -->
+ 
     <tr>
       	<td><a target="_blank" href="https://outlook.cloud.microsoft/mail/"><img src="static/outlook.png" alt=""></a></td>
       	<td><a target="_blank" href="https://standrewscs-my.sharepoint.com"><img src="static/onedri.png" alt=""></a></td>
@@ -164,7 +161,7 @@
 		<td><a target="_blank" href="https://brasurf.com.au/cam/bondi"><img src="fsh-spin.gif" alt=""></a></td>
     </tr>
 
-    <!-- Row 2 -->
+  
     <tr>
       	<td><a target="_blank" href="https://standrewscs.sharepoint.com/sites/student/sitepages/datadashboards.aspx"><img src="static/data.png" alt=""></a></td>
       	<td><a target="_blank" href="https://en.wikipedia.org"><img src="static/wiki.png" alt=""></a></td>
@@ -180,7 +177,6 @@
       	<td id="actg"></td>
     </tr>
 
-    <!-- Row 3 -->
     <tr>
       	<td><a target="_blank" href="https://sacs-nsw.libguides.com/home"><img src="static/slibrary.png" alt=""></a></td>
       	<td><a target="_blank" href="schedule.pdf"><img src="static/hscschedule.png" alt=""></a></td>
@@ -196,7 +192,6 @@
 		<td><a target="_blank" href="/"><img src="static/suggestion.png" alt=""></a></td>
     </tr>
 
-    <!-- Row 4 -->
     <tr>
 		<td><a target="_blank" href="https://www.litcharts.com/lit/antony-and-cleopatra"><img src="shakespear.png" alt=""></a></td>
       	
@@ -219,35 +214,10 @@
 
 
 <script>
-// ===== EVENTS =====
-	const events = [
-	  { time: new Date("2026-05-01T13:10:00").getTime(), label: "NEXT TOK PERIOD" },
-	  { time: new Date("2026-05-01T14:10:00").getTime(), label: "TOK ENDS IN" },
-	  { time: new Date("2026-05-04T08:45:00").getTime(), label: "LITERATURE HL PAPER 1" },
-	  { time: new Date("2026-05-04T10:00:00").getTime(), label: "LITERATURE HL PAPER 1 TIME REMAINING" }
-	];
-
-	// sort once
-	events.sort((a, b) => a.time - b.time);
 
 
-	// ===== GET NEXT EVENT TEXT =====
-	function getNextEventText() {
-	  const now = Date.now();
 
-	  const next = events.find(e => e.time > now);
-	  if (!next) return "All events completed";
 
-	  const diff = next.time - now;
-
-	  const totalMinutes = Math.floor(diff / (1000 * 60));
-
-	  const days = Math.floor(totalMinutes / (60 * 24));
-	  const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
-	  const minutes = totalMinutes % 60;
-
-	  return `${next.label}: ${days}d ${hours}h ${minutes}m`;
-	}
 
 	function shuffle(array) {
 	  for (let i = array.length - 1; i > 0; i--) {
@@ -288,13 +258,11 @@
 
 	  const spacer = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-	  // 👇 ADD EVENT TEXT
-	  const eventText = getNextEventText();
-	  // shuffled.push(eventText);
+
 
 	  const tickerText = shuffled.join(spacer);
 
-	  // duplicate for smooth loop
+
 	  ticker.innerHTML = tickerText + spacer + tickerText;
 	}
 	
